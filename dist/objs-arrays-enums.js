@@ -5,16 +5,17 @@ var Role;
     Role[Role["READ_ONLY"] = 100] = "READ_ONLY";
     Role["AUTHOR"] = "AUTHOR";
 })(Role || (Role = {}));
-const profile = {
+var profile = {
     name: 'Chandler',
     age: 24,
     hobbies: ['Games', 'Cooking'],
     role: Role.ADMIN
 };
-let favorites;
+var favorites;
 favorites = ['Books'];
 console.log(profile.hobbies);
-for (const hobby of profile.hobbies) {
+for (var _i = 0, _a = profile.hobbies; _i < _a.length; _i++) {
+    var hobby = _a[_i];
     console.log(hobby.toUpperCase());
 }
 if (profile.role === Role.AUTHOR) {

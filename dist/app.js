@@ -1,16 +1,10 @@
 "use strict";
-let id = 'er23v';
-const button = document.querySelector('button');
-function added(n1, n2) {
-    if (n1 + n2 > 0) {
-        return n1 + n2;
+var Department = (function () {
+    function Department(n) {
+        this.name = n;
     }
-    return;
-}
-function clickHandler(message) {
-    console.log('Clicked ' + message);
-}
-if (button) {
-    button.addEventListener('click', clickHandler.bind(null, 'Thank you.'));
-}
+    return Department;
+}());
+var accounting = new Department('Accounting');
+console.log(accounting);
 //# sourceMappingURL=app.js.map

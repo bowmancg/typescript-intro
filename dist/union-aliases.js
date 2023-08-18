@@ -1,6 +1,6 @@
 "use strict";
 function combine(input1, input2, resultConversion) {
-    let result;
+    var result;
     if ((typeof input1 === "number" && typeof input2 === "number") ||
         resultConversion === "as-number") {
         result = +input1 + +input2;
@@ -10,10 +10,10 @@ function combine(input1, input2, resultConversion) {
     }
     return result;
 }
-const combinedAges = combine(30, 26, "as-number");
+var combinedAges = combine(30, 26, "as-number");
 console.log(combinedAges);
-const combinedStringAges = combine("30", "26", "as-number");
+var combinedStringAges = combine("30", "26", "as-number");
 console.log(combinedStringAges);
-const combinedNames = combine("Chandler", "Bowman", "as-text");
+var combinedNames = combine("Chandler", "Bowman", "as-text");
 console.log(combinedNames);
 //# sourceMappingURL=union-aliases.js.map
