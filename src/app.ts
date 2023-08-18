@@ -1,7 +1,18 @@
-const button = document.querySelector('button')!
+let id = 'er23v'
 
-button?.addEventListener('click', () => {
-    console.log('Clicked')
-})
+const button = document.querySelector('button')
 
-const map = new Map()
+function added(n1: number, n2: number) {
+    if (n1 + n2 > 0) {
+        return n1 + n2
+    }
+    return
+}
+
+function clickHandler(message: string) {
+    console.log('Clicked ' + message)
+}
+
+if (button) {
+button.addEventListener('click', clickHandler.bind(null, 'Thank you.'))
+}
