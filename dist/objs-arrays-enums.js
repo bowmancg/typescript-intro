@@ -20,3 +20,4 @@ for (const hobby of profile.hobbies) {
 if (profile.role === Role.AUTHOR) {
     console.log('is author');
 }
+//# sourceMappingURL=objs-arrays-enums.js.map

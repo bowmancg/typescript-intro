@@ -13,3 +13,4 @@ const number2 = 2.8;
 const printResult = true;
 let resultPhrase = 'Result is: ';
 const result = adding(number1, number2, printResult, resultPhrase);
+//# sourceMappingURL=basics.js.map

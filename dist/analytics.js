@@ -5,3 +5,4 @@ function sendAnalytics(data) {
     logged = true;
 }
 sendAnalytics('Data');
+//# sourceMappingURL=analytics.js.map
