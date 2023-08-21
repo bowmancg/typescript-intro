@@ -20,8 +20,8 @@ var Department = (function () {
         this.name = name;
         this.employees = [];
     }
-    Department.prototype.describe = function () {
-        console.log("Department (".concat(this.id, "): ").concat(this.name));
+    Department.createEmployee = function (name) {
+        return { name: name };
     };
     Department.prototype.addEmployee = function (employee) {
         this.employees.push(employee);
@@ -30,6 +30,7 @@ var Department = (function () {
         console.log(this.employees.length);
         console.log(this.employees);
     };
+    Department.fiscalYear = 2020;
     return Department;
 }());
 var ITDepartment = (function (_super) {
@@ -39,6 +40,9 @@ var ITDepartment = (function (_super) {
         _this.admins = admins;
         return _this;
     }
+    ITDepartment.prototype.describe = function () {
+        console.log('IT ID: ' + this.id);
+    };
     return ITDepartment;
 }(Department));
 var AccountingDepartment = (function (_super) {
@@ -65,6 +69,16 @@ var AccountingDepartment = (function (_super) {
         enumerable: false,
         configurable: true
     });
+    AccountingDepartment.getInstance = function () {
+        if (AccountingDepartment.instance) {
+            return this.instance;
+        }
+        this.instance = new AccountingDepartment('d2', []);
+        return this.instance;
+    };
+    AccountingDepartment.prototype.describe = function () {
+        console.log('Accounting ID: ' + this.id);
+    };
     AccountingDepartment.prototype.addEmployee = function (name) {
         if (name === 'Chandler') {
             return;
@@ -80,18 +94,21 @@ var AccountingDepartment = (function (_super) {
     };
     return AccountingDepartment;
 }(Department));
+var employee1 = Department.createEmployee('Chandler');
+console.log(employee1, Department.fiscalYear);
 var it = new ITDepartment('d1', ['Chandler']);
 it.addEmployee('Chandler');
 it.addEmployee('Grant');
 it.describe();
 it.printEmployeeInfo();
 console.log(it);
-var accounting = new AccountingDepartment('d2', []);
+var accounting = AccountingDepartment.getInstance();
+var accounting2 = AccountingDepartment.getInstance();
+console.log(accounting, accounting2);
 accounting.latestReport = 'Year End Report';
 accounting.addReport('No Report Found.');
 console.log(accounting.latestReport);
 accounting.addEmployee('Chandler');
 accounting.addEmployee('Grant');
-accounting.printReports();
-accounting.printEmployeeInfo();
+accounting.describe();
 //# sourceMappingURL=app.js.map
