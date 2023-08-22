@@ -1,22 +1,22 @@
 "use strict";
 var e1 = {
-    name: 'Chandler',
-    privileges: ['create-server'],
-    startDate: new Date()
+    name: "Chandler",
+    privileges: ["create-server"],
+    startDate: new Date(),
 };
 function addCombine(a, b) {
-    if (typeof a === 'string' || typeof b === 'string') {
+    if (typeof a === "string" || typeof b === "string") {
         return a.toString() + b.toString();
     }
     return a + b;
 }
 function printEmployeeInfo(emp) {
-    console.log('Name: ' + emp.name);
-    if ('privileges' in emp) {
-        console.log('Privileges: ' + emp.privileges);
+    console.log("Name: " + emp.name);
+    if ("privileges" in emp) {
+        console.log("Privileges: " + emp.privileges);
     }
-    if ('startDate' in emp) {
-        console.log('Starting Date: ' + emp.startDate);
+    if ("startDate" in emp) {
+        console.log("Starting Date: " + emp.startDate);
     }
 }
 printEmployeeInfo(e1);
@@ -24,7 +24,7 @@ var Car = (function () {
     function Car() {
     }
     Car.prototype.drive = function () {
-        console.log('Car');
+        console.log("Car");
     };
     return Car;
 }());
@@ -32,7 +32,7 @@ var Truck = (function () {
     function Truck() {
     }
     Truck.prototype.drive = function () {
-        console.log('Truck');
+        console.log("Truck");
     };
     Truck.prototype.loadCargo = function (amount) {
         console.log("Loading ".concat(amount, " Lbs. of cargo."));
@@ -52,14 +52,20 @@ useVehicle(v2);
 function moveAnimal(animal) {
     var speed;
     switch (animal.type) {
-        case 'bird':
+        case "bird":
             speed = animal.flyingSpeed;
             break;
-        case 'horse':
+        case "horse":
             speed = animal.runningSpeed;
     }
     console.log("A ".concat(animal.type, " moves at ").concat(speed, " mi/hr"));
 }
-moveAnimal({ type: 'bird', flyingSpeed: 10 });
-moveAnimal({ type: 'horse', runningSpeed: 25 });
+moveAnimal({ type: "bird", flyingSpeed: 10 });
+moveAnimal({ type: "horse", runningSpeed: 25 });
+var userInputElement = document.getElementById('user-input');
+userInputElement.value = 'Hello.';
+var errorBag = {
+    email: 'Email Invalid.',
+    username: 'Start with a capital letter.'
+};
 //# sourceMappingURL=app.js.map
