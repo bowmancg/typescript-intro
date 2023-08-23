@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 var e1 = {
     name: "Chandler",
     privileges: ["create-server"],
@@ -10,62 +11,15 @@ function addCombine(a, b) {
     }
     return a + b;
 }
-function printEmployeeInfo(emp) {
-    console.log("Name: " + emp.name);
-    if ("privileges" in emp) {
-        console.log("Privileges: " + emp.privileges);
-    }
-    if ("startDate" in emp) {
-        console.log("Starting Date: " + emp.startDate);
-    }
-}
-printEmployeeInfo(e1);
-var Car = (function () {
-    function Car() {
-    }
-    Car.prototype.drive = function () {
-        console.log("Car");
-    };
-    return Car;
-}());
-var Truck = (function () {
-    function Truck() {
-    }
-    Truck.prototype.drive = function () {
-        console.log("Truck");
-    };
-    Truck.prototype.loadCargo = function (amount) {
-        console.log("Loading ".concat(amount, " Lbs. of cargo."));
-    };
-    return Truck;
-}());
-var v1 = new Car();
-var v2 = new Truck();
-function useVehicle(vehicle) {
-    vehicle.drive();
-    if (vehicle instanceof Truck) {
-        vehicle.loadCargo(1000);
-    }
-}
-useVehicle(v1);
-useVehicle(v2);
-function moveAnimal(animal) {
-    var speed;
-    switch (animal.type) {
-        case "bird":
-            speed = animal.flyingSpeed;
-            break;
-        case "horse":
-            speed = animal.runningSpeed;
-    }
-    console.log("A ".concat(animal.type, " moves at ").concat(speed, " mi/hr"));
-}
-moveAnimal({ type: "bird", flyingSpeed: 10 });
-moveAnimal({ type: "horse", runningSpeed: 25 });
-var userInputElement = document.getElementById('user-input');
-userInputElement.value = 'Hello.';
-var errorBag = {
-    email: 'Email Invalid.',
-    username: 'Start with a capital letter.'
+var results = addCombine('Chandler', ' Bowman');
+results.split(' ');
+var fetchedUserData = {
+    id: 'u1',
+    name: 'Chandler',
+    job: { title: 'CTO', description: 'My Company' }
 };
+console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
+var userInputs = undefined;
+var storedData = userInputs !== null && userInputs !== void 0 ? userInputs : 'DEFAULT';
+console.log(storedData);
 //# sourceMappingURL=app.js.map
