@@ -50,4 +50,12 @@ var textStorage = new DataStorage();
 textStorage.addItem('Chandler');
 console.log(textStorage.getItems());
 var numberStorage = new DataStorage();
+function createCourseGoal(title, description, date) {
+    var courseGoal = {};
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = date;
+    return courseGoal;
+}
+var names = ['Chandler', 'Grant'];
 //# sourceMappingURL=app.js.map
