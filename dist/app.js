@@ -1,61 +1,35 @@
 "use strict";
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-function merge(objA, objB) {
-    return Object.assign(objA, objB);
-}
-var mergedObj = merge({ name: "Chandler", hobbies: ["Books"] }, { age: 24 });
-console.log(mergedObj);
-function countAndDescribe(element) {
-    var descriptionText = 'No Value.';
-    if (element.length === 1) {
-        descriptionText = 'Found 1 element';
-    }
-    else if (element.length > 1) {
-        descriptionText = 'Found ' + element.length + ' elements.';
-    }
-    return [element, descriptionText];
-}
-console.log(countAndDescribe(['Cooking', 'Games']));
-function extractConvert(obj, key) {
-    return 'Value: ' + obj[key];
-}
-extractConvert({ name: 'Chandler' }, 'name');
-var DataStorage = (function () {
-    function DataStorage() {
-        this.data = [];
-    }
-    DataStorage.prototype.addItem = function (item) {
-        this.data.push(item);
+function Logger(logString) {
+    return function (constructor) {
+        console.log(logString);
+        console.log(constructor);
     };
-    DataStorage.prototype.removeItem = function (item) {
-        if (this.data.indexOf(item) === -1) {
-            return;
+}
+function WithTemplate(template, hookId) {
+    return function (constructor) {
+        const hookEl = document.getElementById(hookId);
+        const a = new constructor();
+        if (hookEl) {
+            hookEl.innerHTML = template;
+            hookEl.querySelector('h1').textContent = a.name;
         }
-        this.data.splice(this.data.indexOf(item), 1);
     };
-    DataStorage.prototype.getItems = function () {
-        return __spreadArray([], this.data, true);
-    };
-    return DataStorage;
-}());
-var textStorage = new DataStorage();
-textStorage.addItem('Chandler');
-console.log(textStorage.getItems());
-var numberStorage = new DataStorage();
-function createCourseGoal(title, description, date) {
-    var courseGoal = {};
-    courseGoal.title = title;
-    courseGoal.description = description;
-    courseGoal.completeUntil = date;
-    return courseGoal;
 }
-var names = ['Chandler', 'Grant'];
+let Account = class Account {
+    constructor() {
+        this.name = 'Chandler';
+        console.log('Creating Object.');
+    }
+};
+Account = __decorate([
+    WithTemplate('<h1>My Account Object</h2>', 'app')
+], Account);
+const acc = new Account();
+console.log(acc);
 //# sourceMappingURL=app.js.map

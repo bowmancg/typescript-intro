@@ -1,6 +1,6 @@
 "use strict";
 function adding(n1, n2, showResult, phrase) {
-    var result = n1 + n2;
+    const result = n1 + n2;
     if (showResult) {
         console.log(phrase + result);
     }
@@ -8,9 +8,9 @@ function adding(n1, n2, showResult, phrase) {
         return result;
     }
 }
-var number1 = 5;
-var number2 = 2.8;
-var printResult = true;
-var resultPhrase = 'Result is: ';
-var result = adding(number1, number2, printResult, resultPhrase);
+let number1 = 5;
+const number2 = 2.8;
+const printResult = true;
+let resultPhrase = 'Result is: ';
+const result = adding(number1, number2, printResult, resultPhrase);
 //# sourceMappingURL=basics.js.map
