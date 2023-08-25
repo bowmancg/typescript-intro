@@ -6,13 +6,17 @@ function Logger(logString: string) {
 }
 
 function WithTemplate(template: string, hookId: string) {
-    return function (constructor: any) {
-        console.log('Rendering Template')
-        const hookEl = document.getElementById(hookId)
-        const a = new constructor()
-        if (hookEl) {
-            hookEl.innerHTML = template
-            hookEl.querySelector('h1')!.textContent = a.name
+    return function<T extends {new(...args: any[]): {name: string}}>(firstConstructor: T) {
+        return class extends firstConstructor {
+            constructor(..._: any[]) {
+                super()
+                console.log('Rendering Template')
+                const hookEl = document.getElementById(hookId)
+                if (hookEl) {
+                    hookEl.innerHTML = template
+                    hookEl.querySelector('h1')!.textContent = this.name
+                }
+            }
         }
     }
 }

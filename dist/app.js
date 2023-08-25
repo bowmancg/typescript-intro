@@ -15,14 +15,18 @@ function Logger(logString) {
     };
 }
 function WithTemplate(template, hookId) {
-    return function (constructor) {
-        console.log('Rendering Template');
-        const hookEl = document.getElementById(hookId);
-        const a = new constructor();
-        if (hookEl) {
-            hookEl.innerHTML = template;
-            hookEl.querySelector('h1').textContent = a.name;
-        }
+    return function (firstConstructor) {
+        return class extends firstConstructor {
+            constructor(..._) {
+                super();
+                console.log('Rendering Template');
+                const hookEl = document.getElementById(hookId);
+                if (hookEl) {
+                    hookEl.innerHTML = template;
+                    hookEl.querySelector('h1').textContent = this.name;
+                }
+            }
+        };
     };
 }
 let Account = class Account {
