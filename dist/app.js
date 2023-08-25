@@ -13,6 +13,7 @@ function Logger(logString) {
 }
 function WithTemplate(template, hookId) {
     return function (constructor) {
+        console.log('Rendering Template');
         const hookEl = document.getElementById(hookId);
         const a = new constructor();
         if (hookEl) {
@@ -28,8 +29,33 @@ let Account = class Account {
     }
 };
 Account = __decorate([
+    Logger('Logging.'),
     WithTemplate('<h1>My Account Object</h2>', 'app')
 ], Account);
 const acc = new Account();
 console.log(acc);
+function Log(target, propertyName) {
+    console.log('Property decorator');
+    console.log(target, propertyName);
+}
+class Product {
+    set price(val) {
+        if (val > 0) {
+            this._price = val;
+        }
+        else {
+            throw new Error('Invalid Price.');
+        }
+    }
+    constructor(t, p) {
+        this.title = t;
+        this._price = p;
+    }
+    getPriceWithTax(tax) {
+        return this._price * (1 + tax);
+    }
+}
+__decorate([
+    Log
+], Product.prototype, "title", void 0);
 //# sourceMappingURL=app.js.map
