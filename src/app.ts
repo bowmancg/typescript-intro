@@ -3,10 +3,16 @@ interface Draggable {
   dragEndHandler(event: DragEvent): void;
 }
 
+// interface DragEvent {
+//   dragOverHandler(event: DragTarget): void
+//   dropHandler(event: DragTarget): void;
+//   dragLeaveHandler(event: DragTarget): void;
+// }
+
 interface DragTarget {
-  dragOverHandler(event: DragTarget): void;
-  dropHandler(event: DragTarget): void;
-  dragLeaveHandler(event: DragTarget): void;
+  dragOverHandler(event: DragEvent): void;
+  dropHandler(event: DragEvent): void;
+  dragLeaveHandler(event: DragEvent): void;
 }
 
 enum ProjectStatus {
@@ -198,7 +204,7 @@ class ProjectItem
   }
 }
 
-class ProjectList extends Component<HTMLDivElement, HTMLElement> {
+class ProjectList extends Component<HTMLDivElement, HTMLElement> implements DragTarget {
   assignedProjects: Project[];
 
   constructor(private type: "active" | "finished") {
@@ -209,7 +215,25 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
     this.renderContent();
   }
 
+  @autobind
+  dragOverHandler(_: DragEvent) {
+    const listEle = this.element.querySelector('ul')!
+    listEle.classList.add('droppable')
+  }
+
+  dropHandler(_: DragEvent) {
+    
+  }
+
+  dragLeaveHandler(_: DragEvent) {
+    
+  }
+
   configure() {
+    this.element.addEventListener('dragover', this.dragOverHandler)
+    this.element.addEventListener('dragleave', this.dragLeaveHandler)
+    this.element.addEventListener('drop', this.dropHandler)
+
     projectState.addListener((projects: Project[]) => {
       const relevantProjects = projects.filter((prj) => {
         if (this.type === "active") {
